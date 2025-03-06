@@ -5,5 +5,6 @@ Describe here what the package actually do
 ## Installation
 
 ```bash
-python3 -m pip install package
+poetry lock
+poetry install
 ```

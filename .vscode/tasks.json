@@ -1,27 +1,33 @@
 {
     "tasks": [
         {
-            "label": "Unit-tests",
+            "label": "Install dependencies",
             "type": "shell",
-            "command": "coverage run --source=package_foobar -m unittest discover -v -b -s ."
+            "command": "poetry lock && poetry install",
+            "options": {
+                "cwd": "${workspaceFolder}/package_foobar"
+            }
         },
         {
-            "label": "Code coverage",
+            "label": "Pylint check",
             "type": "shell",
-            "dependsOn": [
-                "Unit-tests"
-            ],
-            "command": "coverage html --omit=\"/usr/*,/home/runner/.local/*\" ; setsid xdg-open ${workspaceFolder}/htmlcov/index.html"
+            "command": "poetry run pylint src tests --msg-template=\"{path}:{line}:{column}: {msg_id} ({symbol}) {msg}\"",
+            "options": {
+                "cwd": "${workspaceFolder}/package_foobar"
+            }
+        },
+        {
+            "label": "Unit-tests",
+            "type": "shell",
+            "command": "poetry run pytest --cov=. --cov-report html:${workspaceFolder}/output/coverage_report/",
+            "options": {
+                "cwd": "${workspaceFolder}/package_foobar"
+            }
         },
         {
             "label": "Format everything",
             "type": "shell",
             "command": "pre-commit run --all-files"
-        },
-        {
-            "label": "Pylint check",
-            "type": "shell",
-            "command": "pylint --load-plugins=pylint.extensions.docparams  ${workspaceFolder}/package_foobar/"
         },
         {
             "label": "Deploy locally",
