@@ -14,4 +14,12 @@
     "python.testing.pytestEnabled": true,
     "python.testing.autoTestDiscoverOnSaveEnabled": false,
     "python.testing.pytestPath": "/home/vscode/.cache/pypoetry/virtualenvs/package-foobar-4jssprLa-py3.10/bin/pytest",
+    "pylint.path": [
+        "/home/vscode/.cache/pypoetry/virtualenvs/package-foobar-4jssprLa-py3.10/bin/pylint"
+    ],
+    "pylint.enabled": true,
+    "pylint.interpreter": [
+        "/home/vscode/.cache/pypoetry/virtualenvs/package-foobar-4jssprLa-py3.10/bin/python"
+    ],
+    "pylint.cwd": "${workspaceFolder}/package_foobar/",
 }
