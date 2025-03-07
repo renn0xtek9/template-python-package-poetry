@@ -2,7 +2,7 @@
 
 import unittest
 
-from .example import return_two
+from package_foobar.example import return_two
 
 
 class TestReturnTwo(unittest.TestCase):

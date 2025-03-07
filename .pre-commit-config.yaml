@@ -1,5 +1,5 @@
 # https://pre-commit.com/hooks.html
-default_stages: [commit]
+default_stages: [pre-commit]
 repos:
   - repo: meta
     hooks:
@@ -28,7 +28,7 @@ repos:
     hooks:
       - id: black
         language_version: python3
-        args: [--preview, --quiet, --config, pyproject.toml]
+        args: [--preview, --quiet, --config, package_foobar/pyproject.toml]
   - repo: https://github.com/pycqa/flake8
     rev: 3.9.2
     hooks:
@@ -38,13 +38,6 @@ repos:
     rev: 6.3.0
     hooks:
       - id: pydocstyle
-  - repo: local
-    hooks:
-      - id: pylint
-        name: pylint
-        entry: /bin/bash -c "~/.local/bin/pylint --load-plugins=pylint.extensions.docparams/package $*"
-        language: script
-        types: [python]
   - repo: https://github.com/PyCQA/isort
     rev: 5.13.0
     hooks:
